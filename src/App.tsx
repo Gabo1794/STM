@@ -1,5 +1,8 @@
-import { Button, ConfigProvider } from 'antd';
+import { ConfigProvider } from 'antd';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './pages/Login/Index';
+import Dashboard from './pages/Dashboard/Index';
+import NotFound from './pages/NotFound/Index';
 
 function App() {
 
@@ -13,10 +16,10 @@ function App() {
   >
     <Router>
       <Routes>
-        <Route path="/" Component={() => <div>hola mundo</div>}/>
-        <Route path="/dashboard" Component={() => <div>hola mundo2</div>}/>
+        <Route path="/" Component={() => <Login /> } />
+        <Route path="/dashboard" Component={() => <Dashboard /> }/>
         {/* <Route path="/dashboard/:params" Component={() => <div>hola mundo2</div>}/> const { postSlug } = useParams(); */}
-        <Route path="*" Component={() => <div>Not found</div>}/>
+        <Route path="*" Component={() => <NotFound />}/>
       </Routes>
     </Router>
   </ConfigProvider>
