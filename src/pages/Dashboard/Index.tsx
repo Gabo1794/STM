@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import dayjs from "dayjs";
 import { Badge, Calendar, Button, Form, Input, DatePicker, Select } from "antd";
 import type { Dayjs } from "dayjs";
@@ -108,7 +108,7 @@ const Index = () => {
     <>
       <CustomModal
         open={openModal}
-        title="Add new event"
+        title={`Add new event in ${selectedValue}`}
         footer={false}
         close={setOpenModal}
       >

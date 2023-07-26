@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
+import { Modal } from 'antd';
 import CustomModalProps from './CustomModalProps';
 
 const CustomModal = (props: CustomModalProps) => {
