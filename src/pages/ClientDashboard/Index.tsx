@@ -1,11 +1,11 @@
 import { useState } from "react";
 import dayjs from "dayjs";
+import { useParams } from "react-router-dom";
 import { Badge, Calendar, Button, Form, Input, DatePicker, Select } from "antd";
 import type { Dayjs } from "dayjs";
 import type { CellRenderInfo } from "rc-picker/lib/interface";
 import type { BadgeProps, DatePickerProps, SelectProps } from "antd";
 import CustomModal from "../../components/Modal/CustomModal";
-import "dayjs/locale/es";
 
 const options: SelectProps["options"] = [];
 
@@ -17,13 +17,11 @@ for (let i = 10; i < 36; i++) {
 }
 
 const Index = () => {
+  const { cdid } = useParams();
   const [form] = Form.useForm();
   const [openModal, setOpenModal] = useState(false);
   const [value, setValue] = useState(() => dayjs("2017-01-25"));
   const [selectedValue, setSelectedValue] = useState(() => dayjs("2017-01-25"));
-  const [showBtnClientUrl, setShowBtnClientUrl] = useState<Boolean>(false);
-  const [clientUrl, setClientUrl] = useState<string>("");
-  const [loading, setLoading] = useState<any>(false);
 
   const onSelect = (newValue: Dayjs) => {
     setValue(newValue);
@@ -108,64 +106,6 @@ const Index = () => {
     console.log(date, dateString);
   };
 
-  const onChangeClientSelect = (value: string) => {
-    if (value !== "all") setShowBtnClientUrl(true);
-    else setShowBtnClientUrl(false);
-  };
-
-  const ShowButtonClienteUrl = () => {
-    if (!showBtnClientUrl) return null;
-
-    return (
-      <div
-      style={{
-        display: "flex",
-        alignItems: "center"
-      }}
-      >
-        <Button
-          type="primary"
-          style={{
-            marginLeft: 20,
-            marginRight: 20
-          }}
-          onClick={GenerateClientSharedUrl}
-          loading={loading}
-        >
-          Compartir
-        </Button>
-        {clientUrl === "" ? null : ShowGenerateUrl()}
-      </div>
-    );
-  };
-
-  const GenerateClientSharedUrl = () => {
-    setLoading(true)
-    setTimeout(() => {
-      const newPath = `${window.location.protocol}//${window.location.host}/clientdashboard/testClientCalendarId`;
-      setClientUrl(newPath)
-      setLoading(false)
-    }, 3000)
-  };
-
-  const ShowGenerateUrl = () => {
-    return (
-      <div
-      style={{
-        display: "flex",
-        alignItems: "center"
-      }}
-      >
-        <label style={{ marginRight: 20 }}>{clientUrl}</label>
-        <Button 
-          onClick={() => {
-          navigator.clipboard.writeText(clientUrl);
-          alert(`${clientUrl}: copiada con exito`)
-        }}>Copiar</Button>
-      </div>
-    )
-  }
-
   return (
     <>
       <CustomModal
@@ -225,19 +165,6 @@ const Index = () => {
               ]}
             />
           </Form.Item>
-          <Form.Item label="Client Assigned">
-            <Select
-              defaultValue="lucy"
-              style={{ width: "100%" }}
-              // onChange={handleChange}
-              options={[
-                { value: "jack", label: "Jack" },
-                { value: "lucy", label: "Lucy" },
-                { value: "Yiminghe", label: "yiminghe" },
-                { value: "disabled", label: "Disabled", disabled: true },
-              ]}
-            />
-          </Form.Item>
           <Form.Item>
             <div style={{ display: "flex", flexDirection: "row-reverse" }}>
               <Button
@@ -252,26 +179,6 @@ const Index = () => {
           </Form.Item>
         </Form>
       </CustomModal>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <h2 style={{ marginRight: 20 }}>Ver calendario de: </h2>
-        <Select
-          defaultValue="all"
-          style={{ width: "20%" }}
-          onChange={onChangeClientSelect}
-          options={[
-            { value: "all", label: "Todos" },
-            { value: "client1", label: "Cliente 1" },
-            { value: "client2", label: "Cliente 2" },
-            { value: "disabled", label: "Disabled", disabled: true },
-          ]}
-        />
-        {ShowButtonClienteUrl()}
-      </div>
       <Calendar
         cellRender={cellRender}
         value={value}
