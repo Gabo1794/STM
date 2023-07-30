@@ -18,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" Component={() => <Login /> } />
         <Route path="/dashboard" Component={() => <Dashboard /> }/>
+        <Route path="/clientdashboard/:cdid" Component={() => <Dashboard /> }/>
         {/* <Route path="/dashboard/:params" Component={() => <div>hola mundo2</div>}/> const { postSlug } = useParams(); */}
         <Route path="*" Component={() => <NotFound />}/>
       </Routes>
