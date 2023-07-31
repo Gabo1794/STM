@@ -23,6 +23,8 @@ const Index = () => {
   const [value, setValue] = useState(() => dayjs("2017-01-25"));
   const [selectedValue, setSelectedValue] = useState(() => dayjs("2017-01-25"));
 
+  console.log(cdid);
+
   const onSelect = (newValue: Dayjs) => {
     setValue(newValue);
     setSelectedValue(newValue);
@@ -110,7 +112,7 @@ const Index = () => {
     <>
       <CustomModal
         open={openModal}
-        title={`Add new event in ${selectedValue}`}
+        title={`Editar el evento del: ${selectedValue}`}
         footer={false}
         close={setOpenModal}
       >
@@ -122,15 +124,14 @@ const Index = () => {
           // onValuesChange={onFormLayoutChange}
           // style={{ maxWidth: formLayout === 'inline' ? 'none' : 600 }}
         >
-          <Form.Item label="Title">
-            <Input placeholder="input placeholder" />
+          <Form.Item label="Titulo del evento">
+            <Input placeholder="Descripción breve de la actividad a agendar" />
           </Form.Item>
-          <Form.Item label="Date to do">
+          <Form.Item label="Fecha a realizar la actividad">
             <DatePicker onChange={onChange} style={{ width: "100%" }} />
           </Form.Item>
-          <Form.Item label="Assigned to">
+          <Form.Item label="Asignar persona que realizara la actividad">
             <Select
-              defaultValue="lucy"
               style={{ width: "100%" }}
               // onChange={handleChange}
               options={[
@@ -141,26 +142,25 @@ const Index = () => {
               ]}
             />
           </Form.Item>
-          <Form.Item label="Task to do">
+          <Form.Item label="Actividades a realizar">
             <Select
-              mode="multiple"
               allowClear
+              mode="tags"
               style={{ width: "100%" }}
-              placeholder="Please select"
-              defaultValue={["a10", "c12"]}
               // onChange={handleChange}
+              tokenSeparators={[","]}
               options={options}
             />
           </Form.Item>
-          <Form.Item label="Status">
+          <Form.Item label="Estado del evento agendado">
             <Select
               defaultValue="lucy"
               style={{ width: "100%" }}
               // onChange={handleChange}
               options={[
-                { value: "jack", label: "Jack" },
-                { value: "lucy", label: "Lucy" },
-                { value: "Yiminghe", label: "yiminghe" },
+                { value: "jack", label: "Iniciado" },
+                { value: "lucy", label: "No iniciado" },
+                { value: "Yiminghe", label: "En proceso" },
                 { value: "disabled", label: "Disabled", disabled: true },
               ]}
             />
