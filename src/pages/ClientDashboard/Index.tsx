@@ -40,25 +40,25 @@ const Index = () => {
     switch (value.date()) {
       case 8:
         listData = [
-          { type: "warning", content: "This is warning event." },
-          { type: "success", content: "This is usual event." },
+          { type: "warning", content: "Reparación equipo." },
+          { type: "success", content: "Cita con cliente LALA" },
         ];
         break;
       case 10:
         listData = [
-          { type: "warning", content: "This is warning event." },
-          { type: "success", content: "This is usual event." },
-          { type: "error", content: "This is error event." },
+          { type: "warning", content: "Repacación de equipo" },
+          { type: "success", content: "Repacación de equipo" },
+          { type: "error", content: "Repacación de equipo" },
         ];
         break;
       case 15:
         listData = [
-          { type: "warning", content: "This is warning event" },
-          { type: "success", content: "This is very long usual event。。...." },
-          { type: "error", content: "This is error event 1." },
-          { type: "error", content: "This is error event 2." },
-          { type: "error", content: "This is error event 3." },
-          { type: "error", content: "This is error event 4." },
+          { type: "warning", content: "Repacación de equipo" },
+          { type: "success", content: "Repacación de equipo" },
+          { type: "error", content: "Repacación de equipo" },
+          { type: "error", content: "Repacación de equipo" },
+          { type: "error", content: "Repacación de equipo" },
+          { type: "error", content: "Repacación de equipo" },
         ];
         break;
       default:
