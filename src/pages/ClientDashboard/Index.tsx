@@ -40,25 +40,23 @@ const Index = () => {
     switch (value.date()) {
       case 8:
         listData = [
-          { type: "warning", content: "This is warning event." },
-          { type: "success", content: "This is usual event." },
+          { type: "warning", content: "Fumigación para el cliente LALA" },
+          { type: "success", content: "Cita con cliente Alpura" },
         ];
         break;
       case 10:
         listData = [
-          { type: "warning", content: "This is warning event." },
-          { type: "success", content: "This is usual event." },
-          { type: "error", content: "This is error event." },
+          { type: "warning", content: "Reparación de equipo de fumigación" },
+          { type: "success", content: "Reparación de equipo de fumigación" },
+          { type: "error", content: "Reparación de equipo de fumigación" },
         ];
         break;
       case 15:
         listData = [
-          { type: "warning", content: "This is warning event" },
-          { type: "success", content: "This is very long usual event。。...." },
-          { type: "error", content: "This is error event 1." },
-          { type: "error", content: "This is error event 2." },
-          { type: "error", content: "This is error event 3." },
-          { type: "error", content: "This is error event 4." },
+          { type: "warning", content: "Reparación de equipo de fumigación" },
+          { type: "success", content: "Reparación de equipo de fumigación" },
+          { type: "error", content: "Reparación de equipo de fumigación" },
+          { type: "error", content: "Reparación de equipo de fumigación" },
         ];
         break;
       default:
