@@ -1,5 +1,5 @@
 import { auth } from "../../firebase/config";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 
 export const SignInWithEmailAndPassword = async (username, password) => {
@@ -23,3 +23,10 @@ export const SignInWithEmailAndPassword = async (username, password) => {
 export const LogOut = () => {
     auth.signOut();
 };
+
+// export const ValidateUserSigIn = () => {
+//     onAuthStateChanged(auth, (user) => {
+//         if(!user) return false;
+//         else return true;
+//     });
+// }

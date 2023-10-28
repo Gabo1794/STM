@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Layout, theme, Avatar, Popover } from "antd";
 import { AppContext } from "../../context/AppContextProvider";
 import { LogOut } from "../../services/auth/authService";
@@ -9,11 +9,24 @@ const { Header } = Layout;
 const Index = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const { enterpriseInfo } = useContext(AppContext);
+  const { isUserSignIn, enterpriseInfo } = useContext(AppContext);
+  const [userName, setUserName] = useState("");
+  const [userLastName, setUserLastName] = useState("");
 
-  const {
-    User: { Name, LastName },
-  } = enterpriseInfo;
+  useEffect(() => {
+    if(!isUserSignIn) {
+      navigate("/");
+    }
+
+    if(enterpriseInfo) {
+      const {
+        User: { Name, LastName },
+      } = enterpriseInfo;
+
+      setUserName(Name);
+      setUserLastName(LastName);
+    }
+  },[isUserSignIn, enterpriseInfo])
 
   const {
     token: { colorBgContainer },
@@ -44,12 +57,12 @@ const Index = () => {
         >
           <div className="cursor-pointer">
             <Avatar className="header-user-avatar cursor-pointer">
-              {Name.substring(0, 1)}
-              {LastName.substring(0, 1)}
+              {userName.substring(0, 1)}
+              {userLastName.substring(0, 1)}
             </Avatar>
             <label className="m-l-20 cursor-pointer">
               <strong>
-                {Name} {LastName}
+                {userName} {userLastName}
               </strong>
               <CaretDownOutlined />
             </label>

@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Button, Card, Space } from "antd";
 import AppLayout from "../../components/Layout/Index";
 import AppCalendar from "../../components/Calendar/Index";
 import AppModal from '../../components/Modal/Index';
 import AppAppointmentForm from '../../components/AppointmentForm/Index';
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../context/AppContextProvider";
 
 const Index = () => {
+  const navigate = useNavigate();
+  const { isUserSignIn } = useContext(AppContext);
   const [openModal, setOpenModal] = useState(false);
+  
+  useEffect(() => {
+    if(!isUserSignIn) {
+      navigate("/");
+    }
+  },[isUserSignIn])
   
   const handleOpenModalNewAppointment = () => {
     return (
